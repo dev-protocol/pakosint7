@@ -74,7 +74,22 @@ export function ResultsTable({ results }: ResultsTableProps) {
                             <TableCell className="font-medium">{result.mobile || "N/A"}</TableCell>
                             <TableCell>{result.name || "N/A"}</TableCell>
                             <TableCell>{result.cnic || "N/A"}</TableCell>
-                            <TableCell>{result.address || "N/A"}</TableCell>
+                            <TableCell>
+                                {result.address ? (
+                                    <a
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                        result.address
+                                    )}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="hover:underline"
+                                    >
+                                    {result.address}
+                                    </a>
+                                ) : (
+                                    "N/A"
+                                )}
+                            </TableCell>
                         </TableRow>
                         ))}
                     </TableBody>
